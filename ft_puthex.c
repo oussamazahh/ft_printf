@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putheX.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 10:51:00 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/01/09 11:13:56 by ozahidi          ###   ########.fr       */
+/*   Created: 2024/01/10 14:15:50 by ozahidi           #+#    #+#             */
+/*   Updated: 2024/01/10 15:08:30 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_strlen(const char *s)
+int	ft_puthex(unsigned int nb, char c)
 {
-	int	i;
+	char	*str;
+	int		index;
+	int		i;
 
 	i = 0;
-	while (*s++)
-		i++;
+	if (c == 'x')
+		str = "0123456789abcdef";
+	if (c == 'X')
+		str = "0123456789ABCDEF";
+	if (nb >= 16)
+		i += ft_puthex(nb / 16, c);
+	index = nb % 16;
+	i += ft_putchar(str[index]);
 	return (i);
 }

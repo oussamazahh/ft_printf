@@ -26,13 +26,30 @@
 //     }
 //     va_end(print);
 // }
+
+#include <fcntl.h>
+
 int main()
 {
     // int o = 0;
-    int s = 0;
-    printf("%p\n",&s);
-    ft_printf("%p",&s);
+    //int s = 1234;
+    // int fd1 = open("ror.txt", O_CREAT | O_RDWR,0777);
+    // printf("%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s");
+    // int fd = open("error.txt", O_CREAT | O_RDWR,0777);
+    // ft_putnbr(fd);
     // s = printf("\001\002\007\v\010\f\r\n");
-    // printf("%s");
+    close (1);
+    int i = ft_printf("%qqqqqqq\n");
+    if (i < 0)
+    {
+        i *= -1;
+        write(2,"-", 1);
+    }
+    char c = i + '0';
+    write(2, &c, 1);
+    // dprintf(2, "%d",);
+    //ft_printf("%qqq",s);
     // printf("%d\n%d",o,s);
+    // va_list sf;
+    // sf.
 }
