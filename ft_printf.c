@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 09:28:58 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/01/12 10:39:07 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/01/19 15:25:46 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ static int	help(char c, va_list print)
 		d += ft_puthex(va_arg(print, unsigned int), c);
 	else if (c == 'X')
 		d += ft_puthex(va_arg(print, unsigned int), c);
-	else
-		d += ft_putchar(c);
 	return (d);
 }
 
@@ -50,8 +48,6 @@ int	ft_printf(const char *format, ...)
 	i = 0;
 	d = 0;
 	va_start(print, format);
-	if (write(1, 0, 0) == -1)
-		return (-1);
 	while (format[i])
 	{
 		if (format[i] == '%' && format[i + 1] != '\0')
@@ -63,5 +59,6 @@ int	ft_printf(const char *format, ...)
 			d += ft_putchar(format[i]);
 		i++;
 	}
+	va_end(print);
 	return (d);
 }
